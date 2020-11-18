@@ -1,5 +1,7 @@
 #pragma once
 #include "identity.h"
+#include "ComputerRoom.h"
+#include <vector>
 class Student: public Identity
 {
 public:
@@ -20,6 +22,11 @@ public:
 	//学生号
 	int m_Id;
 
+	//机房容器
+	vector<ComputerRoom> Com;
+
 private:
 
 };
+
+void studentMenu(Identity*& student);
