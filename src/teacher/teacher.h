@@ -18,3 +18,6 @@ public:
 
 };
 
+void teacherMenu(Identity*& teacher);
+
+

@@ -80,8 +80,8 @@ void LoginIn(string fileName, int type)
 			if (id == fId && name == fName && pwd == fPwd)
 			{
 				cout << "教师验证登录成功!" << endl;
-				pause();
 				person = new Teacher(id, name, pwd);
+				teacherMenu(person);
 				return;
 			}
 		}
@@ -139,6 +139,8 @@ int main()
 			LoginIn(fileName, select);
 			break;
 		case 2: // teacher
+			fileName = TEACHER_FILE;
+			LoginIn(fileName, select);
 			break;
 		case 3: // administrator
 			fileName = ADMIN_FILE;
