@@ -18,7 +18,7 @@ void LoginIn(string fileName, int type)
 	//读文件
 	ifstream ifs;
 	ifs.open(fileName, ios::in);
-	cout<<"文件名字是"<<fileName<<endl;
+	cout << "文件名字是" << fileName << endl;
 	//判断文件是否存在
 	if (!ifs.is_open())
 	{
@@ -43,7 +43,7 @@ void LoginIn(string fileName, int type)
 		cin >> id;
 		break;
 	case 3: // 管理员
-		cout<< "管理员登录"<<endl;
+		cout << "管理员登录" << endl;
 		break;
 	default:
 		//理论上,经过自己的程序调用,不应该有default
@@ -67,8 +67,8 @@ void LoginIn(string fileName, int type)
 			if (id == fId && name == fName && pwd == fPwd)
 			{
 				cout << "学生验证登录成功!" << endl;
-				pause();
 				person = new Student(id, name, pwd);
+				studentMenu(person);
 				return;
 			}
 		}
@@ -93,7 +93,7 @@ void LoginIn(string fileName, int type)
 			if (name == fName && pwd == fPwd)
 			{
 				cout << "管理员验证登录成功!" << endl;
-				person=new Manager(name, pwd);
+				person = new Manager(name, pwd);
 				//进入管理员身份的子菜单
 				managerMenu(person);
 				return;
@@ -113,9 +113,6 @@ void LoginIn(string fileName, int type)
 }
 int main()
 {
-//	Student stu1;
-//	Teacher tea1;
-//	Manager man1;
 	int select = 0;
 	string fileName;
 	while (true)
@@ -138,6 +135,8 @@ int main()
 		switch (select)
 		{
 		case 1: // student
+			fileName = SUTDENT_FILE;
+			LoginIn(fileName, select);
 			break;
 		case 2: // teacher
 			break;

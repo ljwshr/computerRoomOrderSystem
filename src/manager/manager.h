@@ -4,6 +4,7 @@ using namespace std;
 #include "student.h"
 #include "teacher.h"
 #include <vector>
+#include "computerRoom.h"
 
 class Manager: public Identity
 {
@@ -29,6 +30,8 @@ public:
 	vector<Teacher> vTea;
 	//检查重复 参数:传入id,传入类型,返回值:(true 代表有重复,false,代表没有重复)
 	bool checkRepeat(int id, int type);
+	//机房容量
+	vector<ComputerRoom> vCom;
 private:
 };
 void managerMenu(Identity*& manager);

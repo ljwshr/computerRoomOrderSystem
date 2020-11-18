@@ -16,6 +16,22 @@ Manager::Manager(string name, string pwd)
 
 	//初始化容器
 	this->initVector();
+
+	// 获取机房信息
+	ifstream ifs;
+	ifs.open(COMPUTER_FILE, ios::in);
+	if (!ifs.is_open())
+	{
+		cout << "机房文件打开失败" << endl;
+		return;
+	}
+	ComputerRoom c;
+	while (ifs >> c.m_ComId && ifs >> c.m_MaxNum)
+	{
+		vCom.push_back(c);
+	}
+	cout << "当前机房数量为" << vCom.size() << endl;
+	ifs.close();
 }
 
 Manager::~Manager()
@@ -147,10 +163,21 @@ void Manager::showPerson()
 
 void Manager::showComputer()
 {
+	cout << "机房信息如下: " << endl;
+	for (vector<ComputerRoom>::iterator c = vCom.begin(); c != vCom.end(); c++)
+	{
+		cout << "机房编号是: " << c->m_ComId << " 机房的容量是: " << c->m_MaxNum << endl;
+	}
+	pause();
 }
 
 void Manager::cleanFile()
 {
+	ofstream ofs(ORDER_FILE, ios::trunc);
+	ofs.close();
+
+	cout << "清楚成功" << endl;
+	pause();
 
 }
 void Manager::initVector()
